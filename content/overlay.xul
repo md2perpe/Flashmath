@@ -1,0 +1,202 @@
+﻿<?xml version="1.0"?>
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <script type="application/x-javascript"><![CDATA[
+    function insert_symbol(symbol) 
+	{
+        var command = "cmd_insertText";
+        var controller = document.commandDispatcher.getControllerForCommand(command);
+
+        if (controller && controller.isCommandEnabled(command))
+		{
+            controller = controller.QueryInterface(Components.interfaces.nsICommandController);
+            var params = Components.classes["@mozilla.org/embedcomp/command-params;1"];
+            params = params.createInstance(Components.interfaces.nsICommandParams);
+            params.setStringValue("state_data", symbol);
+            controller.doCommandWithParams(command, params);
+        }
+    }
+	
+	function replace_codes()
+	{
+		var theBox = document.commandDispatcher.focusedElement;
+		var text = theBox.value;
+		
+		text = text.replace('->', '→');
+		text = text.replace(/\^1(\D|$)/, '¹$1');
+		text = text.replace(/\^2(\D|$)/, '²$1');
+		text = text.replace(/\^3(\D|$)/, '³$1');
+		text = text.replace('=>', '⇒');
+		text = text.replace(/\bint\b/, '∫');
+		text = text.replace(/\bsqrt\b/, '√');
+		text = text.replace(/\binfty\b/, '∞');
+		text = text.replace(/\boo\b/, '∞');
+		
+		theBox.value = text;
+	}
+    ]]></script>
+
+	<toolbarpalette id="BrowserToolbarPalette">
+    
+    	<toolbarbutton type="menu" id="flashmath-button-greek-upper" label="Grekiska versaler">
+			<menupopup>
+				<menuitem oncommand="insert_symbol(this.label)" label="Α" />
+				<menuitem oncommand="insert_symbol(this.label)" label="Β" />
+				<menuitem oncommand="insert_symbol(this.label)" label="Γ" />
+				<menuitem oncommand="insert_symbol(this.label)" label="Δ" />
+				<menuitem oncommand="insert_symbol(this.label)" label="Ε" />
+				<menuitem oncommand="insert_symbol(this.label)" label="Ζ" />
+				<menuitem oncommand="insert_symbol(this.label)" label="Η" />
+				<menuitem oncommand="insert_symbol(this.label)" label="Θ" />
+				<menuitem oncommand="insert_symbol(this.label)" label="Ι" />
+				<menuitem oncommand="insert_symbol(this.label)" label="Κ" />
+				<menuitem oncommand="insert_symbol(this.label)" label="Λ" />
+				<menuitem oncommand="insert_symbol(this.label)" label="Μ" />
+				<menuitem oncommand="insert_symbol(this.label)" label="Ν" />
+				<menuitem oncommand="insert_symbol(this.label)" label="Ξ" />
+				<menuitem oncommand="insert_symbol(this.label)" label="Ο" />
+				<menuitem oncommand="insert_symbol(this.label)" label="Π" />
+				<menuitem oncommand="insert_symbol(this.label)" label="Ρ" />
+				<menuitem oncommand="insert_symbol(this.label)" label="Σ" />
+				<menuitem oncommand="insert_symbol(this.label)" label="Τ" />
+				<menuitem oncommand="insert_symbol(this.label)" label="Υ" />
+				<menuitem oncommand="insert_symbol(this.label)" label="Φ" />
+				<menuitem oncommand="insert_symbol(this.label)" label="Χ" />
+				<menuitem oncommand="insert_symbol(this.label)" label="Ψ" />
+				<menuitem oncommand="insert_symbol(this.label)" label="Ω" />
+			</menupopup>
+        </toolbarbutton>
+    
+    	<toolbarbutton type="menu" id="flashmath-button-greek-lower" label="Grekiska gemener">
+			<menupopup>
+				<menuitem oncommand="insert_symbol(this.label)" label="α" />
+				<menuitem oncommand="insert_symbol(this.label)" label="β" />
+				<menuitem oncommand="insert_symbol(this.label)" label="γ" />
+				<menuitem oncommand="insert_symbol(this.label)" label="δ" />
+				<menuitem oncommand="insert_symbol(this.label)" label="ε" />
+				<menuitem oncommand="insert_symbol(this.label)" label="ζ" />
+				<menuitem oncommand="insert_symbol(this.label)" label="η" />
+				<menuitem oncommand="insert_symbol(this.label)" label="θ" />
+				<menuitem oncommand="insert_symbol(this.label)" label="ι" />
+				<menuitem oncommand="insert_symbol(this.label)" label="κ" />
+				<menuitem oncommand="insert_symbol(this.label)" label="λ" />
+				<menuitem oncommand="insert_symbol(this.label)" label="μ" />
+				<menuitem oncommand="insert_symbol(this.label)" label="ν" />
+				<menuitem oncommand="insert_symbol(this.label)" label="ξ" />
+				<menuitem oncommand="insert_symbol(this.label)" label="ο" />
+				<menuitem oncommand="insert_symbol(this.label)" label="π" />
+				<menuitem oncommand="insert_symbol(this.label)" label="ρ" />
+				<menuitem oncommand="insert_symbol(this.label)" label="ς" />
+				<menuitem oncommand="insert_symbol(this.label)" label="σ" />
+				<menuitem oncommand="insert_symbol(this.label)" label="τ" />
+				<menuitem oncommand="insert_symbol(this.label)" label="υ" />
+				<menuitem oncommand="insert_symbol(this.label)" label="φ" />
+				<menuitem oncommand="insert_symbol(this.label)" label="χ" />
+				<menuitem oncommand="insert_symbol(this.label)" label="ψ" />
+				<menuitem oncommand="insert_symbol(this.label)" label="ω" />
+			</menupopup>
+        </toolbarbutton>
+    
+    	<toolbarbutton type="menu" id="flashmath-button-arrows" label="Pilar">
+			<menupopup>
+				<menuitem oncommand="insert_symbol(this.label)" label="→" />
+				<menuitem oncommand="insert_symbol(this.label)" label="←" />
+				<menuitem oncommand="insert_symbol(this.label)" label="↑" />
+				<menuitem oncommand="insert_symbol(this.label)" label="↓" />
+				<menuitem oncommand="insert_symbol(this.label)" label="↔" />
+				<menuitem oncommand="insert_symbol(this.label)" label="⇒" />
+				<menuitem oncommand="insert_symbol(this.label)" label="⇐" />
+				<menuitem oncommand="insert_symbol(this.label)" label="⇑" />
+				<menuitem oncommand="insert_symbol(this.label)" label="⇓" />
+				<menuitem oncommand="insert_symbol(this.label)" label="⇔" />
+			</menupopup>
+        </toolbarbutton>
+        
+        <toolbarbutton type="menu" id="flashmath-button-sets" label="Mängder">
+			<menupopup>
+				<menuitem oncommand="insert_symbol(this.label)" label="ℝ" />
+				<menuitem oncommand="insert_symbol(this.label)" label="ℂ" />
+				<menuitem oncommand="insert_symbol(this.label)" label="∁" />
+				<menuitem oncommand="insert_symbol(this.label)" label="Ø" />
+				<menuitem oncommand="insert_symbol(this.label)" label="∈" />
+				<menuitem oncommand="insert_symbol(this.label)" label="∩" />
+				<menuitem oncommand="insert_symbol(this.label)" label="∪" />
+			</menupopup>
+        </toolbarbutton>
+        
+        <toolbarbutton type="menu" id="flashmath-button-logics" label="Logik">
+			<menupopup>
+				<menuitem oncommand="insert_symbol(this.label)" label="∀" />
+				<menuitem oncommand="insert_symbol(this.label)" label="∃" />
+				<menuitem oncommand="insert_symbol(this.label)" label="∧" />
+				<menuitem oncommand="insert_symbol(this.label)" label="∨" />
+			</menupopup>
+        </toolbarbutton>
+        
+        <toolbarbutton type="menu" id="flashmath-button-analysis" label="Analys">
+			<menupopup>
+				<menuitem oncommand="insert_symbol(this.label)" label="∫" />
+				<menuitem oncommand="insert_symbol(this.label)" label="∮" />
+				<menuitem oncommand="insert_symbol(this.label)" label="√" />
+				<menuitem oncommand="insert_symbol(this.label)" label="∛" />
+				<menuitem oncommand="insert_symbol(this.label)" label="∜" />
+				<menuitem oncommand="insert_symbol(this.label)" label="∑" />
+				<menuitem oncommand="insert_symbol(this.label)" label="∏" />
+				<menuitem oncommand="insert_symbol(this.label)" label="∂" />
+			</menupopup>
+        </toolbarbutton>
+
+        <toolbarbutton type="menu" id="flashmath-button-relations" label="Relationer">
+			<menupopup>
+				<menuitem oncommand="insert_symbol(this.label)" label="≤" />
+				<menuitem oncommand="insert_symbol(this.label)" label="≥" />
+				<menuitem oncommand="insert_symbol(this.label)" label="≠" />
+				<menuitem oncommand="insert_symbol(this.label)" label="≈" />
+				<menuitem oncommand="insert_symbol(this.label)" label="≡" />
+			</menupopup>
+        </toolbarbutton>
+
+        <toolbarbutton type="menu" id="flashmath-button-various" label="Blandat">
+			<menupopup>
+				<menuitem oncommand="insert_symbol(this.label)" label="∞" />
+				<menuitem oncommand="insert_symbol(this.label)" label="×" />
+				<menuitem oncommand="insert_symbol(this.label)" label="÷" />
+				<menuitem oncommand="insert_symbol(this.label)" label="±" />
+				<menuitem oncommand="insert_symbol(this.label)" label="℃" />
+				<menuitem oncommand="insert_symbol(this.label)" label="‰" />
+                <menuseparator />
+				<menuitem oncommand="insert_symbol(this.label)" label="½" />
+				<menuitem oncommand="insert_symbol(this.label)" label="⅓" />
+				<menuitem oncommand="insert_symbol(this.label)" label="⅔" />
+				<menuitem oncommand="insert_symbol(this.label)" label="¼" />
+				<menuitem oncommand="insert_symbol(this.label)" label="¾" />
+				<menuitem oncommand="insert_symbol(this.label)" label="⅛" />
+				<menuitem oncommand="insert_symbol(this.label)" label="⅜" />
+				<menuitem oncommand="insert_symbol(this.label)" label="⅝" />
+				<menuitem oncommand="insert_symbol(this.label)" label="⅞" />
+			</menupopup>
+        </toolbarbutton>
+        
+        <toolbarbutton type="menu" id="flashmath-button-super" label="Upphöjda siffror">
+			<menupopup>
+				<menuitem oncommand="insert_symbol(this.label)" label="¹" />
+				<menuitem oncommand="insert_symbol(this.label)" label="²" />
+				<menuitem oncommand="insert_symbol(this.label)" label="³" />
+			</menupopup>
+        </toolbarbutton>
+		
+		<toolbarbutton id="flashmath-button-replace" label="Ersätt koder" oncommand="replace_codes()" />
+        
+	</toolbarpalette>
+
+	<toolbox id="navigator-toolbox">
+		<toolbar
+			id="flashmath"
+			toolbarname="FlashMath"
+			customizable="true"
+			class="chromeclass-toolbar"
+			defaultset="flashmath-button-arrows,flashmath-button-sets,flashmath-button-logics,flashmath-button-analysis,flashmath-button-various,flashmath-button-greek-upper,flashmath-button-greek-lower,flashmath-button-relations,flashmath-button-super,flashmath-button-replace"/>
+	</toolbox>
+
+</overlay>
