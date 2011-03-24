@@ -5,15 +5,15 @@
 
 		<em:id>{4f82b6f4-bf68-11db-8314-0800200c9a66}</em:id>
 		<em:name>FlashMath</em:name>
-		<em:version>0.3</em:version>
+		<em:version>0.5</em:version>
 		<em:description>Matematiksymboler</em:description>
 		<em:creator>manne1973</em:creator>
 
 		<em:targetApplication>
 			<Description>
 				<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
-				<em:minVersion>1.0</em:minVersion>
-				<em:maxVersion>3.*</em:maxVersion>
+				<em:minVersion>3.0</em:minVersion>
+				<em:maxVersion>4.0</em:maxVersion>
 			</Description>
 		</em:targetApplication>
 
